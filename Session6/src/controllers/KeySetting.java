@@ -8,11 +8,13 @@ public class KeySetting {
     public int keyDown;
     public int keyLeft;
     public int keyRight;
+    public int keyShoot;
 
-    public KeySetting(int keyUp, int keyDown, int keyLeft, int keyRight) {
+    public KeySetting(int keyUp, int keyDown, int keyLeft, int keyRight, int keyShoot) {
         this.keyUp = keyUp;
         this.keyDown = keyDown;
         this.keyLeft = keyLeft;
         this.keyRight = keyRight;
+        this.keyShoot = keyShoot;
     }
 }

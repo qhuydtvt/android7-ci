@@ -49,7 +49,9 @@ public class GameWindow extends Frame implements Runnable {
                 KeyEvent.VK_UP,
                 KeyEvent.VK_DOWN,
                 KeyEvent.VK_LEFT,
-                KeyEvent.VK_RIGHT);
+                KeyEvent.VK_RIGHT,
+                KeyEvent.VK_SPACE
+        );
 
         setVisible(true);
         setSize(600, 400);
@@ -106,18 +108,6 @@ public class GameWindow extends Frame implements Runnable {
             public void keyPressed(KeyEvent e) {
                 System.out.println("keyPressed");
                 planeController.keyPressed(e);
-
-                if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-//                    int bulletX = planeController.planeModel.getX() + 35 - 6;
-//                    int bulletY = planeController.planeModel.getY() - 30;
-//                    BulletController bulletController = new BulletController(
-//                            new BulletModel(bulletX, bulletY),
-//                            new BulletView(loadImage("resources/bullet.png"))
-//                    );
-
-//                    bulletVector.add(bulletController);
-                    //Ctrl+/
-                }
             }
 
             @Override
@@ -159,6 +149,7 @@ public class GameWindow extends Frame implements Runnable {
                     bullet.run();
 
                 BodyManager.instance.checkContact();
+                planeController.run();
 
                 enemyControllerManager.run();
 //                enemyController.run();

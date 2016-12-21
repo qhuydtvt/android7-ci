@@ -1,11 +1,13 @@
 package controllers;
 
+import controllers.manangers.ControllerManager;
 import models.Model;
 import utils.Utils;
 import views.View;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.Vector;
 
 /**
  * Created by apple on 12/3/16.
@@ -16,8 +18,11 @@ public class PlaneController extends Controller implements Body {
 
     public KeySetting keySetting;
 
+    private ControllerManager bulletManager;
+
     public PlaneController(Model model, View view) {
         super(model, view);
+        bulletManager = new ControllerManager();
     }
 
     public void keyPressed(KeyEvent e) {
@@ -31,8 +36,28 @@ public class PlaneController extends Controller implements Body {
                 model.move(-SPEED, 0);
             } else if (keyCode == keySetting.keyRight) {
                 model.move(SPEED, 0);
+            } else  if(keyCode == keySetting.keyShoot) {
+                shoot();
             }
         }
+    }
+
+    @Override
+    public void run() {
+        super.run();
+        bulletManager.run();
+    }
+
+    @Override
+    public void draw(Graphics g) {
+        super.draw(g);
+        bulletManager.draw(g);
+    }
+
+    private void shoot() {
+        BulletController bulletController = BulletController.create(this.model.getMidX() - BulletController.WIDTH/ 2,
+                this.model.getY() - BulletController.HEIGHT);
+        bulletManager.add(bulletController);
     }
 
     // Design pattern

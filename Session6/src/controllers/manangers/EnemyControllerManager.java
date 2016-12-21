@@ -10,10 +10,15 @@ import java.util.Vector;
  */
 public class EnemyControllerManager extends ControllerManager {
 
+    int counter;
     @Override
     public void run() {
         super.run();
-        spawn();
+        counter++;
+        if (counter == 100) {
+            spawn();
+            counter = 0;
+        }
     }
 
     private void spawn() {

@@ -4,6 +4,7 @@ import com.sun.org.apache.xpath.internal.operations.Mod;
 import controllers.Body;
 import models.Model;
 
+import java.util.Iterator;
 import java.util.Vector;
 
 /**
@@ -23,6 +24,14 @@ public class BodyManager {
     }
 
     public void checkContact() {
+        Iterator<Body> iterator = this.bodies.iterator();
+        while(iterator.hasNext()) {
+            Body  body = iterator.next();
+            if (!body.getModel().isAlive()) {
+                iterator.remove();
+            }
+        }
+
         for(int i = 0; i < bodies.size() - 1; i++) {
             for(int j = i + 1; j < bodies.size(); j++) {
                 Body bodyi = bodies.get(i);
