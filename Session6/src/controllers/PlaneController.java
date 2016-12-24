@@ -1,5 +1,6 @@
 package controllers;
 
+import controllers.enemies.EnemyBulletController;
 import controllers.manangers.ControllerManager;
 import models.Model;
 import utils.Utils;
@@ -7,7 +8,6 @@ import views.View;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.util.Vector;
 
 /**
  * Created by apple on 12/3/16.
@@ -72,7 +72,7 @@ public class PlaneController extends Controller implements Body {
 
     @Override
     public void onContact(Body other) {
-        if (other instanceof  EnemyBulletController) {
+        if (other instanceof EnemyBulletController) {
             System.out.println("Plane:'(");
         }
     }

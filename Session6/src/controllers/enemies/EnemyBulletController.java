@@ -1,6 +1,8 @@
-package controllers;
+package controllers.enemies;
 
-import controllers.manangers.BodyManager;
+import controllers.Body;
+import controllers.Controller;
+import controllers.PlaneController;
 import models.Model;
 import utils.Utils;
 import views.View;
