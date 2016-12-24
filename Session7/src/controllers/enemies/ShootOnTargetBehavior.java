@@ -2,6 +2,7 @@ package controllers.enemies;
 
 import controllers.GameVector;
 import controllers.PlaneController;
+import controllers.manangers.ControllerManager;
 
 import java.util.DoubleSummaryStatistics;
 
@@ -36,6 +37,6 @@ public class ShootOnTargetBehavior implements ShootBehavior {
         EnemyBulletController enemyBulletController =
                 EnemyBulletController.create(x, y, bulletMoveVector);
 
-        enemyController.add(enemyBulletController);
+        ControllerManager.enemyBullet.add(enemyBulletController);
     }
 }

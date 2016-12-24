@@ -1,5 +1,7 @@
 package controllers.enemies;
 
+import controllers.manangers.ControllerManager;
+
 /**
  * Created by apple on 12/21/16.
  */
@@ -10,6 +12,6 @@ public class ShootStraightBehavior implements ShootBehavior {
         int x = enemyController.getModel().getMidX() - 5;
         int y = enemyController.getModel().getY() + 30;
         EnemyBulletController enemyBulletController = EnemyBulletController.create(x,y);
-        enemyController.add(enemyBulletController);
+        ControllerManager.enemyBullet.add(enemyBulletController);
     }
 }

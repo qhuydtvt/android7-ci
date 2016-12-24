@@ -1,5 +1,6 @@
 import controllers.*;
 import controllers.manangers.BodyManager;
+import controllers.manangers.ControllerManager;
 import controllers.manangers.EnemyControllerManager;
 
 import java.awt.*;
@@ -35,6 +36,7 @@ public class GameWindow extends Frame implements Runnable {
         controllers.add(new EnemyControllerManager());
         controllers.add(PlaneController.instance);
         controllers.add(BodyManager.instance);
+        controllers.add(ControllerManager.enemyBullet);
 
         setVisible(true);
         setSize(gameSetting.getWidth(), gameSetting.getHeight());

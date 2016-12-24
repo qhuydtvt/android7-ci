@@ -17,22 +17,22 @@ import java.util.Vector;
 
 public class EnemyController extends Controller implements Body {
 
-
     private static final int WIDTH = 35;
     private static final int HEIGHT = 30;
     private int timeCounter;
 
-    private Vector<EnemyBulletController> enemyBulletControllers;
+//    private Vector<EnemyBulletController> enemyBulletControllers;
 
     private MoveBehavior moveBehavior;
     private ShootBehavior shootBehavior;
-    public void add(EnemyBulletController enemyBulletController) {
-        this.enemyBulletControllers.add(enemyBulletController);
-    }
+
+//    public void add(EnemyBulletController enemyBulletController) {
+//        this.enemyBulletControllers.add(enemyBulletController);
+//    }
 
     public EnemyController(Model model, View view, MoveBehavior moveBehavior, ShootBehavior shootBehavior) {
         super(model, view);
-        enemyBulletControllers = new Vector<>();
+
         timeCounter = 0;
         this.moveBehavior = moveBehavior;
         BodyManager.instance.register(this);
@@ -52,19 +52,6 @@ public class EnemyController extends Controller implements Body {
         if (timeCounter > 30) {
             shoot();
             timeCounter = 0;
-        }
-
-        for (EnemyBulletController enemyBulletController : this.enemyBulletControllers) {
-            enemyBulletController.run();
-        }
-    }
-
-    @Override
-    public void draw(Graphics g) {
-        super.draw(g);
-
-        for (EnemyBulletController enemyBulletController : this.enemyBulletControllers) {
-            enemyBulletController.draw(g);
         }
     }
 

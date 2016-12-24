@@ -19,6 +19,8 @@ public class ControllerManager implements BaseController {
         controllers = new Vector<>();
     }
 
+    public static final ControllerManager enemyBullet = new ControllerManager();
+
     public void draw(Graphics g) {
         for(Controller controller : this.controllers) {
             controller.draw(g);
