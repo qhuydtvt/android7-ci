@@ -26,7 +26,7 @@ public class EnemyControllerManager extends ControllerManager {
         enemyCount++;
         EnemyController enemyController = null;
         if(enemyCount%2 == 0) {
-            enemyController = EnemyController.create(300, 0, EnemyType.GREEN);
+            enemyController = EnemyController.create(300, 0, EnemyType.WHITE);
         }else {
             enemyController = EnemyController.create(300, 0, EnemyType.BROWN);
         }

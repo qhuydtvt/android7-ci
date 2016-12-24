@@ -4,6 +4,7 @@ import controllers.enemies.EnemyBulletController;
 import controllers.manangers.ControllerManager;
 import models.Model;
 import utils.Utils;
+import views.SingleView;
 import views.View;
 
 import java.awt.*;
@@ -57,6 +58,7 @@ public class PlaneController extends Controller implements Body {
     }
 
     private void shoot() {
+        Utils.playSound("resources/shoot.wav", false);
         BulletController bulletController = BulletController.create(this.model.getMidX() - BulletController.WIDTH/ 2,
                 this.model.getY() - BulletController.HEIGHT);
         bulletManager.add(bulletController);
@@ -67,7 +69,7 @@ public class PlaneController extends Controller implements Body {
     private static PlaneController createPlane(int x, int y) {
         PlaneController planeController = new PlaneController(
                 new Model(x, y, 70, 50),
-                new View(Utils.loadImage("resources/plane3.png"))
+                new SingleView(Utils.loadImage("resources/plane3.png"))
         );
         return planeController;
     }

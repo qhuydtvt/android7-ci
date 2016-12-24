@@ -4,6 +4,7 @@ import controllers.enemies.EnemyController;
 import controllers.manangers.BodyManager;
 import models.Model;
 import utils.Utils;
+import views.SingleView;
 import views.View;
 
 /**
@@ -28,12 +29,13 @@ public class BulletController extends Controller implements Body {
         if(other instanceof EnemyController) {
             System.out.println("Oh yeah");
             this.model.setAlive(false);
+            ((EnemyController) other).destroy();
         }
     }
 
     public static BulletController create(int x, int y) {
         Model bullet = new Model(x, y, WIDTH, HEIGHT);
-        View view = new View(Utils.loadImage("resources/bullet.png"));
-        return new BulletController(bullet, view);
+        SingleView singleView = new SingleView(Utils.loadImage("resources/bullet.png"));
+        return new BulletController(bullet, singleView);
     }
 }

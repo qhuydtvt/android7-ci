@@ -33,6 +33,7 @@ public class GameWindow extends Frame implements Runnable {
         configSettings();
 
         controllers = new Vector<>();
+        controllers.add(ControllerManager.explosion);
         controllers.add(new EnemyControllerManager());
         controllers.add(PlaneController.instance);
         controllers.add(BodyManager.instance);

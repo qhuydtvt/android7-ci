@@ -7,6 +7,7 @@ import controllers.GameVector;
 import controllers.PlaneController;
 import models.Model;
 import utils.Utils;
+import views.SingleView;
 import views.View;
 
 /**
@@ -37,14 +38,14 @@ public class EnemyBulletController extends Controller implements Body {
     public static EnemyBulletController create(int x, int y) {
         return new EnemyBulletController(
                 new Model(x, y, WIDTH, HEIGHT),
-                new View(Utils.loadImage("resources/bullet-round.png"))
+                new SingleView(Utils.loadImage("resources/bullet-round.png"))
         );
     }
 
     public static EnemyBulletController create(int x, int y, GameVector gameVector) {
         return new EnemyBulletController(
                 new Model(x, y, WIDTH, HEIGHT),
-                new View(Utils.loadImage("resources/bullet-round.png")),
+                new SingleView(Utils.loadImage("resources/bullet-round.png")),
                 gameVector
         );
     }

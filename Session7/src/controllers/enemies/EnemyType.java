@@ -5,5 +5,6 @@ package controllers.enemies;
  */
 public enum EnemyType {
     BROWN,  // 0
-    GREEN   // 1
+    GREEN,   // 1
+    WHITE
 }

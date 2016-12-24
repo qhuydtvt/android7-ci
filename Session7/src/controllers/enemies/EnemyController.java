@@ -3,12 +3,17 @@ package controllers.enemies;
 import controllers.Body;
 import controllers.BulletController;
 import controllers.Controller;
+import controllers.ExplosionController;
 import controllers.manangers.BodyManager;
+import controllers.manangers.ControllerManager;
 import models.Model;
 import utils.Utils;
+import views.Animation;
+import views.SingleView;
 import views.View;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.Vector;
 
 /**
@@ -65,6 +70,7 @@ public class EnemyController extends Controller implements Body {
 //        // Add bullet to vector
 //        this.enemyBulletControllers.add(enemyBulletController);
         if (shootBehavior != null){
+
             shootBehavior.doShot(this);
         }
     }
@@ -74,17 +80,32 @@ public class EnemyController extends Controller implements Body {
             case BROWN:
                 return new EnemyController(
                         new Model(x, y, WIDTH, HEIGHT),
-                        new View(Utils.loadImage("resources/plane1.png")),
+                        new SingleView(Utils.loadImage("resources/plane1.png")),
                         new MoveStraightDownBehavior(),
                         new ShootStraightBehavior()
                 );
             case GREEN:
                 return new EnemyController(
                         new Model(x, y, WIDTH, HEIGHT),
-                        new View(Utils.loadImage("resources/enemy-green-3.png")),
+                        new SingleView(Utils.loadImage("resources/enemy-green-3.png")),
                         new MoveZigZagBehavior(),
                         new ShootOnTargetBehavior()
                 );
+            case WHITE:
+                Vector<BufferedImage>images = new Vector<>();
+                images.add(Utils.loadImage("resources/enemy_plane_white_1.png"));
+                images.add(Utils.loadImage("resources/enemy_plane_white_2.png"));
+                images.add(Utils.loadImage("resources/enemy_plane_white_3.png"));
+
+
+
+                return new EnemyController(
+                        new Model(x, y, WIDTH, HEIGHT),
+                        new Animation(images),
+                        new MoveZigZagBehavior(),
+                        new ShootOnTargetBehavior()
+                );
+
         }
         return null;
     }
@@ -95,5 +116,13 @@ public class EnemyController extends Controller implements Body {
             System.out.println("Huhu");
             this.model.setAlive(false);
         }
+    }
+
+    public void destroy(){
+        ExplosionController explosionController = new ExplosionController(
+                new Model(this.getModel().getX(), this.getModel().getY(), 32, 32),
+                new Animation(Utils.loadSheet("resources/explosion.png", 32,32,1,6))
+        );
+        ControllerManager.explosion.add(explosionController);
     }
 }
